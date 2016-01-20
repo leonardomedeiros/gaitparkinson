@@ -98,6 +98,9 @@ text(110,0.5,'Right Foot','FontSize',12,'FontWeight','bold');
 legend('All Subjects', 'Healthy Group','PD Group');
 hold off
 
+
+
+
 %% Imagem da Proje��o no AutoEspa�o
 figure(2)
 hold on
@@ -113,33 +116,38 @@ ylabel('2 Principal Component');
 zlabel('3 Principal Component');
 hold off
 
+%% Projection of Test Cases
+u = ones(size(EigenGaitTestData,1),1);
+EigenGaitsTestForClassifying = (EigenGaitTestData - (u*MeanGait))* L_eig_vec; 
+EGTFCSelected = EigenGaitsTestForClassifying(:,sindex(1:5));
 
+personalGaitT = zeros(numberOfTestCases, 4); % first 3 are eigenvalues, 4th is label parkinson/helthy
+for j = 1:numberOfTestCases
+    personalGaitT(j,1:3)= median(EGTFCSelected(labelsTest(:,2)==testCases(j),1:3));
+    personalGaitT(j,4)= max(labelsTest(labelsTest(:,2)==testCases(j),1));
+end
+
+
+    
+    
  
  %% Image of One Subject into the Group.
 figure(7)
 hold on
-%scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 12, personalGaitT(:,4));
-%title('TEST: persons plotted based on 3 most relevant eigenvectors, red = parkinson')
-
-%scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 36, personalGaitT(:,4), 'filled');
 scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 36, personalGaitT(:,4), '*');
-%scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 36, personalGaitT(:,4),'--rs','LineWidth',2,'MarkerEdgeColor','k','MarkerFaceColor','g','MarkerSize',10)
 
 %Scatter -Healthy Subjects
 scatter3(personalGait(1:numberOfTrainHealthy,1),personalGait(1:numberOfTrainHealthy,2), personalGait(1:numberOfTrainHealthy,3), 24, personalGait(1:numberOfTrainHealthy,4)),
 
 %Scatter -Parkinson Subjects
 scatter3(personalGait(indexOfParkinsonData:end,1),personalGait(indexOfParkinsonData:end,2), personalGait(indexOfParkinsonData:end,3), 24, personalGait(indexOfParkinsonData:end,4),'f'),
-
-%plot3((personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3))
-
-%plot3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3))
 plot3(personalGaitT(1:3,1),personalGaitT(1:3,2), personalGaitT(1:3,3), 'blue')
 plot3(personalGaitT(4:6,1),personalGaitT(4:6,2), personalGaitT(4:6,3), 'red')
 grid on
 labelGap = 0.01;
-text(personalGaitT(4,1)+labelGap,personalGaitT(4,2)+labelGap,personalGaitT(4,3)+labelGap,'Indiv�duo Parkisoniano');
-text(personalGaitT(1,1)+labelGap,personalGaitT(1,2)+labelGap,personalGaitT(1,3)+labelGap,'Indiv�duo N�o-Parkisoniano');
+
+text(personalGait(4,1)+labelGap,personalGaitT(4,2)+labelGap,personalGaitT(4,3)+labelGap,'Indiv�duo Parkisoniano');
+text(personalGait(1,1)+labelGap,personalGaitT(1,2)+labelGap,personalGaitT(1,3)+labelGap,'Indiv�duo N�o-Parkisoniano');
 legend('Test Subject', 'Healthy Subject','Parkinsonian Subject','Tracking');
 title('Example of the Projection of The Symptom Tracking','FontWeight','bold')
 xlabel('1 Principal Component');
