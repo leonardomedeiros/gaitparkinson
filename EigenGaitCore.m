@@ -51,7 +51,7 @@ L = A*A'; % L is the surrogate of covariance matrix C=A*A'.
 
 L_eig_vec = [];
 for i = 1 : size(V,2) 
-    if( D(i,i)>1)
+    if( D(i,i)>100)
         L_eig_vec = [V(:,i) L_eig_vec];
     end
 end
