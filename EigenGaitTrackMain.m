@@ -69,7 +69,7 @@ labelsTest  = labels(labels(:,3)==1,:);
     %% Select EigenGait vectors with the best discrimination between healthy and parkinson
     dQ = median(EigenGaits(labelsTrain(:,1)==0,:))-median(EigenGaits(labelsTrain(:,1)>0,:));
     [svalue, sindex] = sort(dQ,'descend');
-    discrminationQuality = sum(svalue(1:3))
+    discrminationQuality = sum(svalue(1:3));
     EigenGaitsSelected = EigenGaits(:,sindex(1:5));
 
 %% Visualize in 3d plot
@@ -80,10 +80,10 @@ for j = 1:numberOfTrainCases
     personalGait(j,4)= max(labelsTrain(labelsTrain(:,2)==trainCases(j),1));
 end
 
-%% Plot do Vetor M�dio
-figure(1)
+%% FIGURE 2. - Mean Vector of the Gait Cycles
+figure(2)
 hold on
-cyclesHealth = size(EigenGaitData,1) * 0.5
+cyclesHealth = size(EigenGaitData,1) * 0.5;
 %plot(mean(EigenGaitData),'green','LineWidth',2,'--');
 %plot(mean(EigenGaitData(1:cyclesHealth,1:160)),'blue','LineWidth',2)
 %plot(mean(EigenGaitData(cyclesHealth+1:end,1:160)),'red','LineWidth',2);
@@ -92,17 +92,17 @@ plot(mean(EigenGaitData),'b-','LineWidth',3);
 
 plot(mean(EigenGaitData(1:cyclesHealth,1:end)),'r:','LineWidth',3)
 plot(mean(EigenGaitData(cyclesHealth+1:end,1:end)),'g--','LineWidth',3);
-title('Mean Scaled (100 Frames) and Normalized (0..1) Gait Vector','FontWeight','bold','FontSize',14)
-text(18,0.5,'Left Foot','FontSize',12,'FontWeight','bold');
-text(110,0.5,'Right Foot','FontSize',12,'FontWeight','bold');
+title('Mean Scaled (100 Frames) and Normalized (0..1) of Gait Cycles','FontWeight','bold','FontSize',18)
+text(22,0.5,'Left Foot','FontSize',16,'FontWeight','bold');
+text(120,0.5,'Right Foot','FontSize',16,'FontWeight','bold');
 legend('All Subjects', 'Healthy Group','PD Group');
 hold off
 
 
 
 
-%% Imagem da Proje��o no AutoEspa�o
-figure(2)
+%% Figure 6 - Projection of the Three More Distinguish Principal Components
+figure(6)
 hold on
 %Scatter -Healthy Subjects
 scatter3(personalGait(1:numberOfTrainHealthy,1),personalGait(1:numberOfTrainHealthy,2), personalGait(1:numberOfTrainHealthy,3), 24, 'blue','f')
@@ -116,7 +116,7 @@ ylabel('2 Principal Component');
 zlabel('3 Principal Component');
 hold off
 
-%% Projection of Test Cases
+%% Calculation of Test Cases Principal Components
 u = ones(size(EigenGaitTestData,1),1);
 EigenGaitsTestForClassifying = (EigenGaitTestData - (u*MeanGait))* L_eig_vec; 
 EGTFCSelected = EigenGaitsTestForClassifying(:,sindex(1:5));
@@ -131,7 +131,9 @@ end
     
     
  
- %% Image of One Subject into the Group.
+ %% Figure (7) - Projection of PRGD (RED) and HEALTHY (BLUE dots) Subjects
+%at Eigengaits Space. RED and BLUE lines indicates the track of the same
+%subject over time
 figure(7)
 hold on
 scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 36, personalGaitT(:,4), '*');
@@ -148,7 +150,7 @@ labelGap = 0.01;
 
 text(personalGait(4,1)+labelGap,personalGaitT(4,2)+labelGap,personalGaitT(4,3)+labelGap,'Indiv�duo Parkisoniano');
 text(personalGait(1,1)+labelGap,personalGaitT(1,2)+labelGap,personalGaitT(1,3)+labelGap,'Indiv�duo N�o-Parkisoniano');
-legend('Test Subject', 'Healthy Subject','Parkinsonian Subject','Tracking');
+legend('Healthy Subject','Parkinsonian Subject','Tracking');
 title('Example of the Projection of The Symptom Tracking','FontWeight','bold')
 xlabel('1 Principal Component');
 ylabel('2 Principal Component');
