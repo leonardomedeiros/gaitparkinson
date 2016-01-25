@@ -3,9 +3,10 @@ function [ TPRATE, FPRATE, PRECISION, ACCURACY, F_SCORE, ConfMatrix ] = cfmatrix
 
 
 TN = sum(labels(:,2) == 0 & labels(:,2) == labels(:,3));
-FP = sum(labels(:,2) == 0 & labels(:,2) != labels(:,3));
+FP = sum(labels(:,2) == 0 & labels(:,2) ~= labels(:,3));
 TP = sum(labels(:,2) == 1 & labels(:,2) == labels(:,3));
-FN = sum(labels(:,2) == 1 & labels(:,2) != labels(:,3));
+FN = sum(labels(:,2) == 1 & labels(:,2) ~= labels(:,3));
+
 
 
 ConfMatrix = [TP FN;FP TN];

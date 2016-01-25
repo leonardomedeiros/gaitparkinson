@@ -1,0 +1,152 @@
+clear all; clc; close all;
+ 
+% Select Test Files
+fileNameTestMatrix = ['GaCo15_01.txt'; 'GaCo15_02.txt'; 'GaCo15_10.txt'; 'GaPt31_01.txt'; 'GaPt31_02.txt'; 'GaPt31_10.txt'];
+
+
+
+%This was the selected Cases to Track the Subjects Along the Time, thats
+%corresponds to fileNameTestMatrix
+testCases = [26 27 28 98 99 100];
+
+
+% Prepare data
+if exist('EigenGaitData.mat')
+    load('EigenGaitData.mat');     
+else 
+    [EigenGaitData, labels, testCases] = prepareEigenGaitData(fileNameTestMatrix);
+    save('EigenGaitData.mat', 'EigenGaitData', 'labels', 'testCases');
+    clear Ga*;
+    clear Ju*; 
+end % if
+
+
+%Train Cases
+trainCases = (1:100);
+%Remove the Test Cases From Train
+trainCases(testCases) = [];
+
+    % Labeling scheme:
+    % Tlable(*,1) = 0 means healthy, = 1 means parkinson
+    % Tlable(*,2) = subject identifying number
+    % Tlable(*,3) = 0 train data, = 1 means test data
+
+% Select test data vs training data
+numberOfSubjects = max(labels(:,2));
+numberOfTestCases = size(fileNameTestMatrix,1);
+numberOfTrainCases = numberOfSubjects - numberOfTestCases;
+
+
+numberOfTrainHealthy = numberOfTrainCases / 2;
+indexOfParkinsonData = numberOfTrainHealthy + 1; 
+
+
+EigenGaitTrainData = EigenGaitData(labels(:,3)==0,:);
+EigenGaitTestData  = EigenGaitData(labels(:,3)==1,:);
+labelsTrain = labels(labels(:,3)==0,:);
+labelsTest  = labels(labels(:,3)==1,:);
+
+
+    MeanGait = mean(EigenGaitTrainData);
+    u = ones(size(EigenGaitTrainData,1),1);
+    A = EigenGaitTrainData - (u*MeanGait); % remember the transform!!
+    L = A'*A;
+    [V D] = eig(L);
+    L_eig_vec = [];
+    for i = 1 : size(V,2) 
+        if( D(i,i) > 100 )
+            L_eig_vec = [L_eig_vec V(:,i)];
+        end
+    end
+    EigenGaits = A * L_eig_vec;
+
+    % Select EigenGait vectors with the best discrimination between healthy and parkinson
+    dQ = median(EigenGaits(labelsTrain(:,1)==0,:))-median(EigenGaits(labelsTrain(:,1)>0,:));
+    [svalue, sindex] = sort(dQ,'descend');
+    discrminationQuality = sum(svalue(1:3));
+    EigenGaitsSelected = EigenGaits(:,sindex(1:5));
+
+% Visualize in 3d plot
+
+personalGait = zeros(numberOfTrainCases, 4); % first 3 are eigenvalues, 4th is label parkinson/healthy
+for j = 1:numberOfTrainCases 
+    personalGait(j,1:3)= median(EigenGaitsSelected(labelsTrain(:,2)==trainCases(j),1:3));
+    personalGait(j,4)= max(labelsTrain(labelsTrain(:,2)==trainCases(j),1));
+end
+
+%% FIGURE 2. - Mean Vector of the Gait Cycles
+figure(2)
+hold on
+cyclesHealth = size(EigenGaitData,1) * 0.5;
+%plot(mean(EigenGaitData),'green','LineWidth',2,'--');
+%plot(mean(EigenGaitData(1:cyclesHealth,1:160)),'blue','LineWidth',2)
+%plot(mean(EigenGaitData(cyclesHealth+1:end,1:160)),'red','LineWidth',2);
+%set(gcf,'Color',[1,0.4,0.6])
+plot(mean(EigenGaitData),'b-','LineWidth',3);
+
+plot(mean(EigenGaitData(1:cyclesHealth,1:end)),'r:','LineWidth',3)
+plot(mean(EigenGaitData(cyclesHealth+1:end,1:end)),'g--','LineWidth',3);
+title('Mean Scaled (100 Frames) and Normalized (0..1) of Gait Cycles','FontWeight','bold','FontSize',18)
+text(22,0.5,'Left Foot','FontSize',16,'FontWeight','bold');
+text(120,0.5,'Right Foot','FontSize',16,'FontWeight','bold');
+legend('All Subjects', 'Healthy Group','PD Group');
+hold off
+
+
+
+
+%% FIGURE 6 - Projection of the Three More Distinguish Principal Components
+figure(6)
+hold on
+%Scatter -Healthy Subjects
+scatter3(personalGait(1:numberOfTrainHealthy,1),personalGait(1:numberOfTrainHealthy,2), personalGait(1:numberOfTrainHealthy,3), 24, 'blue','f')
+grid on
+%Scatter -Parkinson Subjects
+scatter3(personalGait(indexOfParkinsonData:end,1),personalGait(indexOfParkinsonData:end,2), personalGait(indexOfParkinsonData:end,3), 24, 'red'),
+title('3D Projection Into the Eigenspace with 3 More Distinguish Principal Component','FontWeight','bold')
+legend('Control Group','Parkinson Group');
+xlabel('1 Principal Component');
+ylabel('2 Principal Component');
+zlabel('3 Principal Component');
+hold off
+
+% Calculation of Test Cases Principal Components
+u = ones(size(EigenGaitTestData,1),1);
+EigenGaitsTestForClassifying = (EigenGaitTestData - (u*MeanGait))* L_eig_vec; 
+EGTFCSelected = EigenGaitsTestForClassifying(:,sindex(1:5));
+
+personalGaitT = zeros(numberOfTestCases, 4); % first 3 are eigenvalues, 4th is label parkinson/helthy
+for j = 1:numberOfTestCases
+    personalGaitT(j,1:3)= median(EGTFCSelected(labelsTest(:,2)==testCases(j),1:3));
+    personalGaitT(j,4)= max(labelsTest(labelsTest(:,2)==testCases(j),1));
+end
+
+
+    
+    
+ 
+ %% FIGURE 7 - Projection of PRGD (RED) and HEALTHY (BLUE dots) Subjects
+%at Eigengaits Space. RED and BLUE lines indicates the track of the same
+%subject over time
+figure(7)
+hold on
+scatter3(personalGaitT(:,1),personalGaitT(:,2), personalGaitT(:,3), 36, personalGaitT(:,4), '*');
+
+%Scatter -Healthy Subjects
+scatter3(personalGait(1:numberOfTrainHealthy,1),personalGait(1:numberOfTrainHealthy,2), personalGait(1:numberOfTrainHealthy,3), 24, personalGait(1:numberOfTrainHealthy,4)),
+
+%Scatter -Parkinson Subjects
+scatter3(personalGait(indexOfParkinsonData:end,1),personalGait(indexOfParkinsonData:end,2), personalGait(indexOfParkinsonData:end,3), 24, personalGait(indexOfParkinsonData:end,4),'f'),
+plot3(personalGaitT(1:3,1),personalGaitT(1:3,2), personalGaitT(1:3,3), 'blue')
+plot3(personalGaitT(4:6,1),personalGaitT(4:6,2), personalGaitT(4:6,3), 'red')
+grid on
+labelGap = 0.01;
+
+text(personalGait(4,1)+labelGap,personalGaitT(4,2)+labelGap,personalGaitT(4,3)+labelGap,'Indiv�duo Parkisoniano');
+text(personalGait(1,1)+labelGap,personalGaitT(1,2)+labelGap,personalGaitT(1,3)+labelGap,'Indiv�duo N�o-Parkisoniano');
+legend('Healthy Subject','Parkinsonian Subject','Tracking');
+title('Example of the Projection of The Symptom Tracking','FontWeight','bold')
+xlabel('1 Principal Component');
+ylabel('2 Principal Component');
+zlabel('3 Principal Component');
+hold off
