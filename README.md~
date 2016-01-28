@@ -25,7 +25,7 @@ PCA consists of the following steps[4]:
   4. The Calculated eigenvectors and eigenvalues can be used to project the data into a new space called eigenspace.
 
 
-Reproducing the Results Steps
+Reproducing the Results
 =============================
 Considering you have checkout the repository, so:
 
