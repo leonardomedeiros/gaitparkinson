@@ -1,0 +1,136 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/dev/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: cbms2016-gaitpca-finalversion.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: sigproc.bib
+I was expecting a `,' or a `}'---line 140 of file sigproc.bib
+ : 
+ : @InProceedings{atkinson2010,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 2135 of file sigproc.bib
+ : @article{visionbased2009
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3528 of file sigproc.bib
+ : @book{national2006parkinson
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 5707 of file sigproc.bib
+ : @book{world2006neurological
+ :                            ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 7976 of file sigproc.bib
+ : 
+ : @InProceedings{IEEEexample:confwithpaper,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8083 of file sigproc.bib
+ :   
+ :   Address                  = {San Francisco, CA, USA},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 8599 of file sigproc.bib
+ : @article{rodrigo2012
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 8620 of file sigproc.bib
+ : @book{national2006parkinson
+ :                            ,
+I'm skipping whatever remains of this entry
+Database file #2: IEEEFormat.bib
+Repeated entry---line 4 of file IEEEFormat.bib
+ : @article{rodrigo2012
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1236 of file IEEEFormat.bib
+ : @article{visionbased2009
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1555 of file IEEEFormat.bib
+ : @article{toledo2005
+ :                    ,
+I'm skipping whatever remains of this entry
+"}" immediately follows an entry type---line 1598 of file IEEEFormat.bib
+ :  University, Israel. silvi197@bezeqint.net
+ :                                           },
+I'm skipping whatever remains of this entry
+Repeated entry---line 2126 of file IEEEFormat.bib
+ : @book{national2006parkinson
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2913 of file IEEEFormat.bib
+ : @article{mazilu2015
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3187 of file IEEEFormat.bib
+ : @book{world2006neurological
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4431 of file IEEEFormat.bib
+ : @article{gaitusingsensorsreview2012
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4692 of file IEEEFormat.bib
+ : @book{datamining2005
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4832 of file IEEEFormat.bib
+ : @article{ambulatory2010
+ :                        ,
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "rodrigo2012"
+refers to entry "10.4322/rbeb.2012.027", which doesn't exist
+Warning--I didn't find a database entry for "10.4322/rbeb.2012.027"
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 18 entries,
+            4039 wiz_defined-function locations,
+            924 strings with 11224 characters,
+and the built_in function-call counts, 11813 in all, are:
+= -- 905
+> -- 356
+< -- 70
++ -- 178
+- -- 74
+* -- 599
+:= -- 1853
+add.period$ -- 36
+call.type$ -- 18
+change.case$ -- 16
+chr.to.int$ -- 138
+cite$ -- 18
+duplicate$ -- 897
+empty$ -- 982
+format.name$ -- 88
+if$ -- 2679
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 176
+newline$ -- 81
+num.names$ -- 18
+pop$ -- 423
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 902
+stack$ -- 0
+substring$ -- 311
+swap$ -- 677
+text.length$ -- 24
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 18
+warning$ -- 0
+while$ -- 36
+width$ -- 20
+write$ -- 194
+(There were 19 error messages)
