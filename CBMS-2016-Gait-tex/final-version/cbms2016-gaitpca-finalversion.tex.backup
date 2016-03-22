@@ -364,7 +364,8 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{A Gait Analysis Approach to Track Parkinson's Disease Evolution Using Principal Component Analysis}
+\title{Gait Analysis to 
+Parkinson's Disease Evolution Using Reproducible Research Practices}
 
 
 % author names and affiliations
@@ -430,8 +431,7 @@ Robert Fischer\IEEEauthorrefmark{2}}
 
 
 \begin{abstract}
-A research work is reproducible when all research artifacts such as as text, data, figure and code are available for independent researchers reproduce the results. In this paper, we present a reproducible gait analysis to track Parkinson's Disease evolution by monitoring walking abnormalities. We applied Principal Component Analysis into gait data to detect user's abnormalities that may indicate the progression of Parkinson's Disease. We validated our approach with a public database of foot sensor data, which includes vertica%Normalization reference
-%https://en.wikipedia.org/wiki/Normalization_(statistics)l ground reaction force records of subjects with healthy gait and Parkinson's Disease patients. We used the euclidean distance as data classifier. We reached a classification accuracy of 81.00\% with leave-one-out cross-validation, which demonstrates the feasibility of our approach for tracking PD's symptoms based on user gait. All relevant data to reproduce our results are available in a public web page.
+A research work is reproducible when all research artifacts such as as text, data, figure and code are available for independent researchers reproduce the results. In this paper, we present a reproducible gait analysis to track Parkinson's Disease evolution by monitoring walking abnormalities. We applied Principal Component Analysis into gait data to detect user's abnormalities that may indicate the progression of Parkinson's Disease. We validated our approach with a public database of foot sensor data, which includes vertical ground reaction force records of subjects with healthy gait and Parkinson's Disease patients. We used the euclidean distance as data classifier. We reached a classification accuracy of 81.00\% with leave-one-out cross-validation, which demonstrates the feasibility of our approach for tracking PD's symptoms based on user gait. All relevant data to reproduce our results are available n a public web page.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -456,9 +456,9 @@ Gait analysis is the systematic study of human locomotion, including qualitative
 
 Gait analysis has been strongly applied to evaluate the evolution of neurological diseases such as Parkinson's Disease (PD)~\cite{gait2014}, which affects about 2$\%$\ of the world population~\cite{world2006neurological}. It is promising for PD research, because it enables the quantified progress tracking of  PD patients using sensor-based gait analysis~\cite{gaitusingsensorsreview2012}. 
  
-Yang et al.~\cite{igait2012} present an accelerometer-based gait analysis system. They provide a graphical interface to display and analyze the gait acceleration data recorded by an accelerometer attached to the lower back of subjects. This system calculates a total of four gait features: spatio-temporal, frequency domain, regularity and symmetry. However, they do not calculate walking velocity; it is required that the users input this information. 
+Yang et al.~\cite{igait2012} present an accelerometer-based gait analysis system. They provide a graphical interface to display and analyze the gait acceleration data recorded by an accelerometer attached to the lower back of subjects. This system calculates a total of four gait features: spatio-temporal, frequency domain, regularity and symmetry. However, they do not calculate walking velocity; it is required that the users input this information. %An important feature is allowing users to select regions of gait events for a given signal, displaying the results on the screen and saving them for further statistical analysis. So, looking for this related work with could provide an assessment mechanism of this training approach with the evaluation of the PD's patient gait characteristic.
 
-Dillman et al.~\cite{dillmann2014} used Principal Component Analysis (PCA) to analyze movements of the upper and lower extremities during treadmill walking with healthy subjects and two groups of PD's patients. This study considered 35 control subjects and 36 PD patients. They aimed to analyze the value of PCA to characterize dynamic changes of gait, focusing on the gait velocity and the severity of the disease.  
+Dillman et al.~\cite{dillmann2014} used Principal Component Analysis (PCA) to analyze movements of the upper and lower extremities during treadmill walking with healthy subjects and two groups of PD's patients. This study considered 35 control subjects and 36 PD patients. They aimed to analyze the value of PCA to characterize dynamic changes of gait, focusing on the gait velocity and the severity of the disease.  %In our work, we used the PCA values to track the gait characteristics of PD symptoms using the projection of the PCA values into the \textit{eigenspace}. With this projection, we classified data based on the euclidean distance of the training data and compared with the validation test data.
 
 Mazilu et al.~\cite{mazilu2015} investigated the acceptance of a wearable gait assistance for PD's patients at their home. They developed a gait training system that detected Freezing of Gait (FoG) events. With the FoG detection, they used a rhythmic auditory signal that serves as gait stimulation to support the user to alleviate the FoG symptom and resume the gait movement. %So, looking for this related work with could provide an assessment mechanism of this training approach with the evaluation of the PD's patient gait characteristic.
 
@@ -469,6 +469,20 @@ In this paper, we propose a gait analysis approach to track PD evolution by moni
 
 This paper is organized as follows: in Section~\ref{sec:reproducible}, we introduce the motivations and practices regarding reproducible research; in Section~\ref{sec:gait_analysis}, we introduce Gait analysis; PCA is described in Section~\ref{sec:pca}; in Section~\ref{sec:overview}, we present our approach; in Section~\ref{sec:mat_methods}, the materials and methods of the research are presented; in Section~\ref{sec:results}, we show the results; and finally, in Section~\ref{sec:conclusion}, we discuss conclusions and future works.
 
+\section{Reproducible Research}\label{sec:reproducible}
+Computational sciences such as computer science, statistics, many fields of engineering, and signal processing are  theoretical and experimental. These sciences are result of a combination of theorems proving and development of computer codes to validate the research. According to Vanderwalle~\cite{vandewalle2009}, to reproducible research increases the publication impact in these sciences. A research work is called reproducible if all information relevant to the work, including, text, data and code, are available for the independent researchers can reproduce the results. Donoho~\cite{donoho2010} encourages to publish research articles using reproducible research practices to widespread the knowledge. The suggested format for publishing reproducible research is a Web page containing the following items~\cite{vandewalle2009}:
+\begin{enumerate}
+	\item title of the publication;
+    \item authors;
+    \item abstract;
+    \item full reference of the paper;
+    \item all the code to reproduce the results, images and tables;
+    \item all the data to reproduce the results;
+    \item list of configurations on which the code was tested (software version, platform)
+    \item a possibility to give comments and remarks (and to report bugs).
+\end{enumerate}
+
+Therefore, to share our research and receive feedback from independent researchers, we created a web page containg all the relevant information to reproduce our results~\footnote{Website URL: http://gaitparkinson.wordpress.com}. The source code is under GPL licence version 3.0~\footnote{http://www.gnu.org/licenses/gpl-3.0.en.html}, which means that researchers can use it to develop their own research.
 
 
 
@@ -503,7 +517,7 @@ PCA consists of the following steps~\cite{Shlens05atutorial}:
 \end{enumerate}
 
 
-In Figure~\ref{fig:diferencemean}, we show the difference of the mean gait between healthy and PD subjects. We used PCA to identify the difference of the mean gait between PD patients and healthy subjects.
+In Figure~\ref{fig:diferencemean}, we show the difference of the mean gait between healthy and PD subjects.  We used PCA to identify the difference of the mean gait between PD patients and healthy subjects.
 
 \begin{figure}[!h]
 \centering	
@@ -512,6 +526,13 @@ In Figure~\ref{fig:diferencemean}, we show the difference of the mean gait betwe
 \label{fig:diferencemean}
 \end{figure}
 
+% * <mperkusich@gmail.com> 2015-09-14T18:10:13.427Z:
+%
+%  o que vc quer dizer com isso? (em pt-br)
+% Na Figura ~\ref{fig:diferencemean} temos os vetores médios escalonados em 80 medições que foram utilizados para calcular o PCA deste trabalho. Como podemos perceber na Figura XX existem diferenças significativas entre o grupo de controle e os indíviduos parkinsonianos. O PCA será utilizado justamente para identificar essas diferenças e permitir a projeção de uma eventual melhora ou piora do quadro clínico.
+% ^ <mperkusich@gmail.com> 2015-09-14T18:44:16.399Z.
+
+%
 
 
 
@@ -522,7 +543,10 @@ The biomechanical analysis of human gait is part of the diagnosis and treatment 
 After identifying the cycle, we extract a window length with the cycle movement and the gait characteristics and transform the VGRF data into PCA values. We project the values into the \textit{eigenspace} providing a visualization tool to doctor. With this information, the doctor evaluates the patient's gait.
 
 In Figure~\ref{img:sysarch}, we present an overview of our approach applied to a health monitoring system. Its architecture is composed of the gait system acquisition and signal processing component. The gait acquisition component is responsible for collecting user data and storing them in a database. The signal processing component is responsible for processing the data and making the results available to the healthcare professional.
-
+% * <mperkusich@gmail.com> 2015-09-16T02:39:06.282Z:
+%
+%  Ajeite a figura colocando os nomes dos componentes: GAIT ACQUISITION COMPONENT e SIGNAL PROCESSING COMPONENT
+%
 
 \begin{figure}[!htb]
 	\centering
@@ -534,6 +558,8 @@ In Figure~\ref{img:sysarch}, we present an overview of our approach applied to a
 \subsection{Signal Processing Technique}
 
 
+%Signals acquired by motion sensors have a lot of noise. Therefore, identifying the motion cycles is challenging, because they have a position which starts the cycle movement as in Figure 3.2 and the existing noise can cross this line and consequen fearing generate fake IDs. Methods that make low-pass filter can use be applied to smooth the curve and reduce the occurrence of noise, but this implies a change in time of the signal which directly impacts the calculation of the features movement and as a result the accuracy of the final result.
+
 In this work, we applied peaks and valleys detection technique to identify the beginning and end of each gait cycle. This technique identifies the peaks and discard very low values when they are considered noise. The peak is the highest point between the two lower points, which are considered the cycle valleys. The technique is applied to the signal using low pass filter to remove the signal noise. Thus, our biomechanical signal processing uses raw data, filters noise, identifies motion cycles and extracts feature vector characterizing the motion. Furthermore, we applied machine learning techniques for data classification. The complete process of gait analysis based on PCA is shown in Figure~\ref{fig:biomecproc}. It is divided into two phases: biomechanical signal processing and statistical analysis. 
 
 \begin{figure}[!htb]
@@ -542,6 +568,9 @@ In this work, we applied peaks and valleys detection technique to identify the b
 	\caption{Biomechanical signal processing.}
 	\label{fig:biomecproc}
 \end{figure}
+
+%Normalization reference
+%https://en.wikipedia.org/wiki/Normalization_(statistics)
 
 
 Considering the periodic movement of the human gait, we applied the peak and valley technique to identify each gait cycle of the raw data as shown in Figure~\ref{fig:peakvalley}. After identifying the gait cycle, we normalized the values from 0 to 1. Calculating the principal components requires a quadratic matrix~\cite{Shlens05atutorial} (\textit{m} x \textit{n}). Therefore, we scaled each gait cycle into 100 frames to generate the principal components and consequently extract the \textit{eigenvalues} and \textit{eigenvectors}. We used a total of 120 gait cycles for each subject.
@@ -553,6 +582,19 @@ Considering the periodic movement of the human gait, we applied the peak and val
 	\label{fig:peakvalley}
 \end{figure}
 
+%\section{Related Works}
+%\label{sec:related_works}
+%In the literature, we found Gait Analysis workos applied to PD's patients evaluation. 
+
+%This is a standard that establishes the requirements for the safe integration of medical devices and other equipments in a edical system. Its purpose is aiding medical systems to have greater resistance to errors, improving patient safety and effectiveness of their treatment.
+
+%Using the same Physionet Parkinson Disease Database~\cite{physionet}, Rodrigo et al.~\cite{rodrigo2012} used Kohonen map for clustering of locomotion of the gait characteristics comparing with PD's patients and control group subjects. The extracted features was based on Mean coefficient of variation (CV) and Mean sum of VGRF during consecutive stance phases to describe the inter-subject variability. From the analysis of these results the Kohonen map was able to recognize: TP of 72.09$\%$ and TN of 70.21$\%$.
+
+%Yang et al.~\cite{igait2012} developed a accelerometer based gait analysis system. They provide a graphical interface to display and analyze the gait acceleration data recorded by an accelerometer attached to the lower back of subjects. This system, calculates a total of four gait features: spatio-temporal, frequency domain, regularity and simmetry. But, with the accelerometer data they couldn't calculate the walking velocities. So, this information must by inputted by the user. An important feature is allows the user select the regions of gait events for a given signal and display the result on the screen and save the results for further statistical analysis.  So, looking for this related work with could provide an assessment mechanism of this training approach with the evaluation of the PD's patient gait characteristic.
+
+%Dillman et al.~\cite{dillmann2014} used PCA to to analyze movements of the upper and lower extremities during treadmill walking in healthy subjects and two groups of PD's patients. With a study of  35 control subjects and 36 patients with PD patients. They aimed to analyze the value of PCA to characterize dynamic changes of gait. Focusing on the gait velocity and severity of the disease. In our work, we intent to use the PCA values to track the gait characteristics of PD symptoms using the projection of the PCA values into the \textit{eigenspace}. With this projection we did a data classification based on the euclidean distance of the training data and compared with the validation test data.
+
+%Mazilu et al.~\cite{mazilu2015}, investigated the acceptance of a wearable gait assist for PD's patients at their home. They developed a gait training system that detected FoG events. So, with the FoG detection, they used a rhythmic auditory signal that serves as gait stimulation to support the user to alleviate the FoG symptom and resume the gait movement. So, looking for this related work with could provide an assessment mechanism of this training approach with the evaluation of the PD's patient gait characteristic.
 
 
 \section{Material and Methods}\label{sec:mat_methods}
@@ -560,11 +602,20 @@ In this work, we used the data available at~{physionet}\footnote{http://physione
 
 Our source code is under GPL License Version 3.0 and was developed using an Open Source Application (Octave Version 3.8.1~\footnote{http://physionet.org/pn3/gaitpdb/}) for numerical computations. The Octave language is similar to Matlab~\footnote{http://www.mathworks.com} and most programs are easily portable. All data necessary to reproduce our results are available online, as presented in Section \ref{sec:reproducible};
 
+%So, as we are using only free software and a open data set - 5: The results can be easily reproduced by an independent researcher with at most 15 min of user effort, requiring only standard, freely available tools (C compiler, etc.).  According the reproductbility degrees of this research, we intent ~\cite{vandewalle2009}
+
+
+
+
+
+%as you can see the results in the (Fig. 1).
+%PD motor symptoms are usually monitored through motion sensors or video cameras ~\cite{robotgait2014,patel_monitoring_2009,mazilu2015}. Those devices are difficult to be seamlessly integrated in the user routine. 
+%PhysioBank databases are made available under the ODC Public Domain Dedication and License v1.0. 
+
+
 We used an open database under the ODC Public Domain Dedication and License (PDDL) v1.0, which allows to freely share, modify, and use this work for any purpose and without any restrictions. We used The Parkinson's Disease database available at~\cite{physionet} to develop a gait analysis system under GPL license to track PD symptoms. Given data quality, we selected data from fifty PD patients and fifty healthy control subjects~\footnote{The list of used subjects are described in our Reproducible Research website}. Considering both groups, we had mean age of 66.3 years and 63$\%$ men. We applied signal processing technique for the VGRF signal data acquired by foot sensors. We used a supervised learning approach to train our system to identify the subject group (PD or Control) and with the PCA projection into the \textit{eigenspace} we evaluated the PD's progress through the gait characteristics.
 
 By applying the signal processing techniques, we identified gait cycles and calculated the PCA as our feature vectors. The first three PCA were used in our gait analysis PD's tracking system through the projection of the PCA into the \textit{eigenspace}~\cite{Shlens05atutorial}. Thus, we identified two clusters of the group classes and used the class identification to separate them (i.e. control group and PD patients) as shown in the Figure~\ref{fig:projecaopcaparkinson}. 
-
-To reproducible our research~\cite{donoho2010} we created a web page containing all the relevant information to reproduce our results~\footnote{Website URL: http://gaitparkinson.wordpress.com}. The source code is under GPL license version 3.0~\footnote{http://www.gnu.org/licenses/gpl-3.0.en.html}, which means that researchers can use it to develop their own research~\cite{vandewalle2009}.
 
 
 \section{Validation}\label{sec:results}
@@ -580,12 +631,12 @@ In Figure~\ref{fig:projecaopcaparkinson},  we show the projection of the data fr
   \label{fig:projecaopcaparkinson}
 \end{figure}
 
-In our analyses the changes in the patient's gait pattern will result in a moving of this point. For instance, if the point moves towards the direction of the subjects with PD's, so the system detects an increase of PD's symptom with the patient.
+In our analyses the changes in the patient's gait pattern will result in a moving of this point. For instance, if the point moves towards the direction of the subjects with PRGD, so the system detects an increase of PRGD symptoms with the patient.
 
 \begin{figure}
   \centering
   \includegraphics[scale=0.6]{./img/pca-projection-health-parkinson.png}
-  \caption{Projection of PD's (RED) and HEALTHY (BLUE dots) Subjects at \textit{eigenspace}. RED and BLUE lines indicates the track of the same subject over time
+  \caption{Projection of PRGD (RED) and HEALTHY (BLUE dots) Subjects at \textit{eigenspace}. RED and BLUE lines indicates the track of the same subject over time
 }
   \label{fig:projecaopcaparkinson}
 \end{figure}
@@ -643,7 +694,7 @@ Accordingly, the false positives (FP) indicate the normal movement classified as
 
 In this work, a gait analysis approach to track Parkinson's Disease evolution by monitoring walking abnormalities. This approach was evaluated by assessing the biomechanical data measurements from a public database~\cite{physionet}. We monitored PD gait symptoms extracting each gait cycle and calculating their respective Principal Components.  
 
-To evaluate our approach, we performed an experimental study with 100 research subjects divided into PD and Control groups. We used PCA and the euclidean distance to identify PD's gait characteristics and had an accuracy of 81.00\% and 86.00\% of \textit{TpRate}. 
+To evaluate our approach, we performed an experimental study with 100 research subjects divided into PD and Control groups. We used PCA and the euclidean distance to identify PD's gait characteristics and had an accuracy of 81.00\% and 86\% of \textit{TpRate}. 
 
 Our study's limitation is that we do not consider the variation of gait movement between different people. Therefore, it is not a conclusive test to diagnose PD~\cite{gaitusingsensorsreview2012, national2006parkinson}. Despite this limitation, it is accurate to track PD's symptoms based on the user gait.
 

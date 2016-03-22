@@ -71,19 +71,6 @@ I.~H. Witten and E.~Frank, \emph{Data Mining: Practical Machine Learning Tools
   and Techniques}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax San
   Francisco, CA, USA: Morgan Kaufmann Publishers Inc., 2011.
 
-\bibitem{vandewalle2009}
-P.~Vandewalle, J.~Kovacevic, and M.~Vetterli, ``Reproducible research in signal
-  processing,'' \emph{Signal Processing Magazine, IEEE}, vol.~26, no.~3, pp.
-  37--47, May 2009.
-
-\bibitem{donoho2010}
-\BIBentryALTinterwordspacing
-D.~L. Donoho, ``An invitation to reproducible computational research,''
-  \emph{Biostatistics}, vol.~11, no.~3, pp. 385--388, 2010. [Online].
-  Available:
-  \url{http://biostatistics.oxfordjournals.org/content/11/3/385.short}
-\BIBentrySTDinterwordspacing
-
 \bibitem{toledo2005}
 S.~Frenkel-Toledo, N.~Giladi, C.~Peretz, T.~Herman, L.~Gruendlinger, and J.~M.
   Hausdorff, ``Effect of gait speed on gait rhythmicity in parkinson's disease:
@@ -115,6 +102,19 @@ M.~Mustafa, G.~Georgoulas, and G.~Nikolakopoulos, ``Principal component
 \bibitem{Shlens05atutorial}
 J.~Shlens, ``A tutorial on principal component analysis,'' in \emph{Systems
   Neurobiology Laboratory, Salk Institute for Biological Studies}, 2005.
+
+\bibitem{donoho2010}
+\BIBentryALTinterwordspacing
+D.~L. Donoho, ``An invitation to reproducible computational research,''
+  \emph{Biostatistics}, vol.~11, no.~3, pp. 385--388, 2010. [Online].
+  Available:
+  \url{http://biostatistics.oxfordjournals.org/content/11/3/385.short}
+\BIBentrySTDinterwordspacing
+
+\bibitem{vandewalle2009}
+P.~Vandewalle, J.~Kovacevic, and M.~Vetterli, ``Reproducible research in signal
+  processing,'' \emph{Signal Processing Magazine, IEEE}, vol.~26, no.~3, pp.
+  37--47, May 2009.
 
 \bibitem{national2006parkinson}
 N.~I. for Health and C.~E.~G. Britain, \emph{Parkinson's Disease: Diagnosis and
