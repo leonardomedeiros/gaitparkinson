@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: cbms2016-gaitpca-finalversion.aux
+The top-level auxiliary file: cbms2016-gaitpca-camerareadyversion.aux
 The style file: IEEEtran.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -92,45 +92,45 @@ Warning--I didn't find a database entry for "10.4322/rbeb.2012.027"
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 18 entries,
+You've used 17 entries,
             4039 wiz_defined-function locations,
-            924 strings with 11224 characters,
-and the built_in function-call counts, 11813 in all, are:
-= -- 905
-> -- 356
-< -- 70
-+ -- 178
-- -- 74
-* -- 599
-:= -- 1853
-add.period$ -- 36
-call.type$ -- 18
-change.case$ -- 16
-chr.to.int$ -- 138
-cite$ -- 18
-duplicate$ -- 897
-empty$ -- 982
-format.name$ -- 88
-if$ -- 2679
+            918 strings with 11076 characters,
+and the built_in function-call counts, 10955 in all, are:
+= -- 825
+> -- 345
+< -- 60
++ -- 170
+- -- 73
+* -- 556
+:= -- 1711
+add.period$ -- 34
+call.type$ -- 17
+change.case$ -- 15
+chr.to.int$ -- 117
+cite$ -- 17
+duplicate$ -- 839
+empty$ -- 923
+format.name$ -- 87
+if$ -- 2482
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 176
-newline$ -- 81
-num.names$ -- 18
-pop$ -- 423
+int.to.str$ -- 17
+missing$ -- 168
+newline$ -- 76
+num.names$ -- 17
+pop$ -- 413
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 902
+skip$ -- 832
 stack$ -- 0
-substring$ -- 311
-swap$ -- 677
-text.length$ -- 24
+substring$ -- 261
+swap$ -- 623
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 18
+type$ -- 17
 warning$ -- 0
-while$ -- 36
-width$ -- 20
-write$ -- 194
+while$ -- 32
+width$ -- 19
+write$ -- 180
 (There were 19 error messages)

@@ -103,14 +103,6 @@ M.~Mustafa, G.~Georgoulas, and G.~Nikolakopoulos, ``Principal component
 J.~Shlens, ``A tutorial on principal component analysis,'' in \emph{Systems
   Neurobiology Laboratory, Salk Institute for Biological Studies}, 2005.
 
-\bibitem{donoho2010}
-\BIBentryALTinterwordspacing
-D.~L. Donoho, ``An invitation to reproducible computational research,''
-  \emph{Biostatistics}, vol.~11, no.~3, pp. 385--388, 2010. [Online].
-  Available:
-  \url{http://biostatistics.oxfordjournals.org/content/11/3/385.short}
-\BIBentrySTDinterwordspacing
-
 \bibitem{vandewalle2009}
 P.~Vandewalle, J.~Kovacevic, and M.~Vetterli, ``Reproducible research in signal
   processing,'' \emph{Signal Processing Magazine, IEEE}, vol.~26, no.~3, pp.

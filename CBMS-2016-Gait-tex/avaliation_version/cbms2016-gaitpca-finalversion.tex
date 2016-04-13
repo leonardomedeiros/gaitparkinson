@@ -371,20 +371,20 @@
 % use a multiple column layout for up to two different
 % affiliations
 
-\author{\IEEEauthorblockN{Authors Name/s per 1st Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
-\and
-\IEEEauthorblockN{Authors Name/s per 2nd Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
-}
+% \author{\IEEEauthorblockN{Authors Name/s per 1st Affiliation (Author)}
+% \IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
+% line 2: name of organization, acronyms acceptable\\
+% line 3: City, Country\\
+% line 4: Email: name@xyz.com}
+% \and
+% \IEEEauthorblockN{Authors Name/s per 2nd Affiliation (Author)}
+% \IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
+% line 2: name of organization, acronyms acceptable\\
+% line 3: City, Country\\
+% line 4: Email: name@xyz.com}
+% }
 
-\author{\IEEEauthorblockN{Leonardo Medeiros\IEEEauthorrefmark{1,2},
+\author{\IEEEauthorblockN{Leonardo Medeiros\IEEEauthorrefmark{1}\IEEEauthorrefmark{2},
 Hyggo Almeida\IEEEauthorrefmark{1},
 Leandro Dias\IEEEauthorrefmark{3}, 
 Mirko Perkusich\IEEEauthorrefmark{1} and
@@ -430,8 +430,7 @@ Robert Fischer\IEEEauthorrefmark{2}}
 
 
 \begin{abstract}
-A research work is reproducible when all research artifacts such as as text, data, figure and code are available for independent researchers reproduce the results. In this paper, we present a reproducible gait analysis to track Parkinson's Disease evolution by monitoring walking abnormalities. We applied Principal Component Analysis into gait data to detect user's abnormalities that may indicate the progression of Parkinson's Disease. We validated our approach with a public database of foot sensor data, which includes vertica%Normalization reference
-%https://en.wikipedia.org/wiki/Normalization_(statistics)l ground reaction force records of subjects with healthy gait and Parkinson's Disease patients. We used the euclidean distance as data classifier. We reached a classification accuracy of 81.00\% with leave-one-out cross-validation, which demonstrates the feasibility of our approach for tracking PD's symptoms based on user gait. All relevant data to reproduce our results are available in a public web page.
+A research work is reproducible when all research artifacts such as as text, data, figure and code are available for independent researchers reproduce the results. In this paper, we present a reproducible gait analysis to track Parkinson's Disease evolution by monitoring walking abnormalities. We applied Principal Component Analysis into gait data to detect user's abnormalities that may indicate the progression of Parkinson's Disease. We validated our approach with a public database of foot sensor data, which includes vertical ground reaction force records of subjects with healthy gait and Parkinson's Disease patients. We used the euclidean distance as data classifier. We reached a classification accuracy of 81.00\% with leave-one-out cross-validation, which demonstrates the feasibility of our approach for tracking PD's symptoms based on user gait. All relevant data to reproduce our results are available in a public web page.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -467,7 +466,7 @@ used Kohonen map to identify subjects with PD based on their gait patterns. The 
 
 In this paper, we propose a gait analysis approach to track PD evolution by monitoring walking abnormalities. We apply PCA into gait data to detect abnormalities that may indicate the progression of PD. We validated our approach with a public database of foot sensor data, which includes vertical ground reaction force records of healthy subjects and PD patients. We applied the PCA into the data and used the euclidean distance as data classifier reaching a classification accuracy of 81.00\% with leave-one-out cross-validation~\cite{datamining2005}.
 
-This paper is organized as follows: in Section~\ref{sec:reproducible}, we introduce the motivations and practices regarding reproducible research; in Section~\ref{sec:gait_analysis}, we introduce Gait analysis; PCA is described in Section~\ref{sec:pca}; in Section~\ref{sec:overview}, we present our approach; in Section~\ref{sec:mat_methods}, the materials and methods of the research are presented; in Section~\ref{sec:results}, we show the results; and finally, in Section~\ref{sec:conclusion}, we discuss conclusions and future works.
+This paper is organized as follows: in Section~\ref{sec:gait_analysis}, we introduce Gait analysis; PCA is described in Section~\ref{sec:pca}; in Section~\ref{sec:overview}, we present our approach; in Section~\ref{sec:mat_methods}, the materials and methods of the research are presented; in Section~\ref{sec:results}, we show the results; and finally, in Section~\ref{sec:conclusion}, we discuss conclusions and future works.
 
 
 
@@ -558,13 +557,14 @@ Considering the periodic movement of the human gait, we applied the peak and val
 \section{Material and Methods}\label{sec:mat_methods}
 In this work, we used the data available at~{physionet}\footnote{http://physionet.org/pn3/gaitpdb/}, which contains the VGRF records of subjects as they walked at their usual pace for approximately 2 minutes on level ground. To populate this database, data was collected using 8 sensors (Ultraflex Computer Dyno Graphy, Infotronic Inc.\footnote{www.infotronic.nl/items/ExamplesEdwin.pdf}) attached underneath each subject's foot. The sensors measure force (in Newtons) as a function of time. We used two signals, which represent the sum of the 8 sensor outputs for each foot. Even though we used a public database, this work can be adapted to other foot sensors capable of capturing VGRF.
 
-Our source code is under GPL License Version 3.0 and was developed using an Open Source Application (Octave Version 3.8.1~\footnote{http://physionet.org/pn3/gaitpdb/}) for numerical computations. The Octave language is similar to Matlab~\footnote{http://www.mathworks.com} and most programs are easily portable. All data necessary to reproduce our results are available online, as presented in Section \ref{sec:reproducible};
+Our source code is under GPL License Version 3.0\footnote{http://www.gnu.org/licenses/gpl-3.0.en.html} and was developed using an Open Source Application (Octave Version 3.8.1\footnote{http://physionet.org/pn3/gaitpdb/}) for numerical computations. The Octave language is similar to Matlab\footnote{http://www.mathworks.com} and most programs are easily portable. To reproduce our results we created a web page containing all the relevant information~\cite{vandewalle2009}\footnote{Website URL: http://gaitparkinson.wordpress.com}. 
 
-We used an open database under the ODC Public Domain Dedication and License (PDDL) v1.0, which allows to freely share, modify, and use this work for any purpose and without any restrictions. We used The Parkinson's Disease database available at~\cite{physionet} to develop a gait analysis system under GPL license to track PD symptoms. Given data quality, we selected data from fifty PD patients and fifty healthy control subjects~\footnote{The list of used subjects are described in our Reproducible Research website}. Considering both groups, we had mean age of 66.3 years and 63$\%$ men. We applied signal processing technique for the VGRF signal data acquired by foot sensors. We used a supervised learning approach to train our system to identify the subject group (PD or Control) and with the PCA projection into the \textit{eigenspace} we evaluated the PD's progress through the gait characteristics.
+
+
+We used an open database under the ODC Public Domain Dedication and License (PDDL) v1.0, which allows to freely share, modify, and use this work for any purpose and without any restrictions. We used The Parkinson's Disease database available at~\cite{physionet} to develop a gait analysis system under GPL license to track PD symptoms. Given data quality, we selected data from fifty PD patients and fifty healthy control subjects\footnote{The list of used subjects are described in our Reproducible Research website}. Considering both groups, we had mean age of 66.3 years and 63$\%$ men. We applied signal processing technique for the VGRF signal data acquired by foot sensors. We used a supervised learning approach to train our system to identify the subject group (PD or Control) and with the PCA projection into the \textit{eigenspace} we evaluated the PD's progress through the gait characteristics.
 
 By applying the signal processing techniques, we identified gait cycles and calculated the PCA as our feature vectors. The first three PCA were used in our gait analysis PD's tracking system through the projection of the PCA into the \textit{eigenspace}~\cite{Shlens05atutorial}. Thus, we identified two clusters of the group classes and used the class identification to separate them (i.e. control group and PD patients) as shown in the Figure~\ref{fig:projecaopcaparkinson}. 
 
-To reproducible our research~\cite{donoho2010} we created a web page containing all the relevant information to reproduce our results~\footnote{Website URL: http://gaitparkinson.wordpress.com}. The source code is under GPL license version 3.0~\footnote{http://www.gnu.org/licenses/gpl-3.0.en.html}, which means that researchers can use it to develop their own research~\cite{vandewalle2009}.
 
 
 \section{Validation}\label{sec:results}
@@ -585,7 +585,7 @@ In our analyses the changes in the patient's gait pattern will result in a movin
 \begin{figure}
   \centering
   \includegraphics[scale=0.6]{./img/pca-projection-health-parkinson.png}
-  \caption{Projection of PD's (RED) and HEALTHY (BLUE dots) Subjects at \textit{eigenspace}. RED and BLUE lines indicates the track of the same subject over time
+  \caption{Projection of PD's (RED) and HEALTHY (BLUE dots) Subjects at \textit{eigenspace}. RED and BLUE lines indicate the track of the same subject over time
 }
   \label{fig:projecaopcaparkinson}
 \end{figure}
@@ -647,7 +647,7 @@ To evaluate our approach, we performed an experimental study with 100 research s
 
 Our study's limitation is that we do not consider the variation of gait movement between different people. Therefore, it is not a conclusive test to diagnose PD~\cite{gaitusingsensorsreview2012, national2006parkinson}. Despite this limitation, it is accurate to track PD's symptoms based on the user gait.
 
-For future works, we plan to use another public database hosted on Physionet~\cite{physionet} including different diseases as: Huntington's Disease, Amyotrophic Lateral Sclerosis and Stroke patients~\footnote{http://www.physionet.org/physiobank/database/gaitndd/} to perform multi-class classification. 
+For future works, we plan to use another public database hosted on Physionet~\cite{physionet} including different diseases as: Huntington's Disease, Amyotrophic Lateral Sclerosis and Stroke patients\footnote{http://www.physionet.org/physiobank/database/gaitndd/} to perform multi-class classification. 
 
 
 
