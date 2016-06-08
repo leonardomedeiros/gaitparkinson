@@ -1,0 +1,15 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: gaitcbms2016.aux
+The style file: IEEEtran.bst
+I couldn't open database file sigproc2.bib
+---line 92 of file gaitcbms2016.aux
+ : \bibdata{sigproc2
+ :                  ,IEEEFormat}
+I'm skipping whatever remains of this command
+I found no \citation commands---while reading file gaitcbms2016.aux
+I found no database files---while reading file gaitcbms2016.aux
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 3 error messages)
