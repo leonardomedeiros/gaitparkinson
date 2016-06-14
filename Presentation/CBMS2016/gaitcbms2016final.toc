@@ -1,0 +1,7 @@
+\beamer@endinputifotherversion {3.12pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Motivation}{3}{0}{1}
+\beamer@sectionintoc {2}{PCA for Gait Analysis}{11}{0}{2}
+\beamer@sectionintoc {3}{Developed Approach}{19}{0}{3}
+\beamer@sectionintoc {4}{Validation}{22}{0}{4}
+\beamer@sectionintoc {5}{Questions}{27}{0}{5}
